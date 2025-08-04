@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SteeringWheel : MonoBehaviour
 {
-    public SteeringData steeringData;
+    public ShipData shipData;
     
     bool isDragging = false;
     float startAngle;
@@ -36,14 +36,14 @@ public class SteeringWheel : MonoBehaviour
             // Calculate the proposed new wheel angle
             float proposedAngle = continuousWheelAngle + Mathf.Clamp(
                 Mathf.DeltaAngle(continuousWheelAngle, targetAngle),
-                -steeringData.maxRotationSpeed * Time.deltaTime,
-                steeringData.maxRotationSpeed * Time.deltaTime);
+                -shipData.wheelMaxRotationSpeed * Time.deltaTime,
+                shipData.wheelMaxRotationSpeed * Time.deltaTime);
 
             // Map to rudder and clamp
-            float mappedRudder = Mathf.Clamp(proposedAngle * steeringData.rudderMultiplier, -steeringData.rudderMaxAngle, steeringData.rudderMaxAngle);
+            float mappedRudder = Mathf.Clamp(proposedAngle * shipData.rudderMultiplier, -shipData.rudderMaxAngle, shipData.rudderMaxAngle);
 
             // Only update if the rudder is not at its limit, or if moving back towards center
-            bool atLimit = Mathf.Abs(mappedRudder) >= steeringData.rudderMaxAngle - 0.01f;
+            bool atLimit = Mathf.Abs(mappedRudder) >= shipData.rudderMaxAngle - 0.01f;
             bool movingTowardsCenter = Mathf.Sign(Mathf.DeltaAngle(continuousWheelAngle, targetAngle)) != Mathf.Sign(mappedRudder);
 
             if (!atLimit || movingTowardsCenter)
@@ -51,25 +51,25 @@ public class SteeringWheel : MonoBehaviour
                 continuousWheelAngle = proposedAngle;
                 transform.rotation = Quaternion.Euler(0, 0, continuousWheelAngle);
 
-                if (steeringData != null)
+                if (shipData != null)
                 {
-                    steeringData.wheelAngle = continuousWheelAngle;
-                    steeringData.rudderAngle = mappedRudder;
+                    shipData.wheelAngle = continuousWheelAngle;
+                    shipData.rudderAngle = mappedRudder;
                 }
             }
         }
         else
         {
             // Linearly unwind the wheel to the target angle, preserving multiple rotations
-            float returnTarget = steeringData.returnTarget;
-            float returnSpeed = steeringData.returnSpeed;
+            float returnTarget = shipData.wheelReturnTarget;
+            float returnSpeed = shipData.wheelReturnSpeed;
             continuousWheelAngle = Mathf.MoveTowards(continuousWheelAngle, returnTarget, returnSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 0, continuousWheelAngle);
 
-            if (steeringData != null)
+            if (shipData != null)
             {
-                steeringData.wheelAngle = continuousWheelAngle;
-                steeringData.rudderAngle = Mathf.Clamp(continuousWheelAngle * steeringData.rudderMultiplier, -steeringData.rudderMaxAngle, steeringData.rudderMaxAngle);
+                shipData.wheelAngle = continuousWheelAngle;
+                shipData.rudderAngle = Mathf.Clamp(continuousWheelAngle * shipData.rudderMultiplier, -shipData.rudderMaxAngle, shipData.rudderMaxAngle);
             }
         }
     }

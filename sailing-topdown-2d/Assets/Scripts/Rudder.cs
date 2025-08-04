@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Rudder : MonoBehaviour
 {
-    public SteeringData steeringData;
+    public ShipData shipData;
     
     void Update()
     {
-        if (steeringData != null)
+        if (shipData != null)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -steeringData.rudderAngle); // Invert angle to match steering direction
+            transform.rotation = Quaternion.Euler(0, 0, -shipData.rudderAngle); // Invert angle to match steering direction
         }
     }
 }

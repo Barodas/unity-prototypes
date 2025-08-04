@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rudderMaxAngle: 50
   rudderMultiplier: 0.08
-  maxRotationSpeed: 180
-  returnTarget: 0
-  returnSpeed: 30
+  wheelMaxRotationSpeed: 180
+  wheelReturnTarget: 0
+  wheelReturnSpeed: 90
+  turnRate: 0.5
   rudderAngle: 0
   wheelAngle: 0
+  moveSpeed: 5
+  heading: 358.7411
