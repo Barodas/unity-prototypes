@@ -1,12 +1,18 @@
 using UnityEngine;
 
-public class Compass : MonoBehaviour
+public class CompassUI : MonoBehaviour
 {
-    public Transform environmentRoot;
+    public ShipData shipData;
+    RectTransform compassRect;
+
+    void Awake()
+    {
+        compassRect = GetComponent<RectTransform>();
+    }
 
     void Update()
     {
-        // Rotate compass to counteract environment rotation
-        transform.rotation = Quaternion.Euler(0, 0, -environmentRoot.eulerAngles.z);
+        // Rotate compass so north is always up
+        compassRect.localRotation = Quaternion.Euler(0, 0, -shipData.heading);
     }
 }

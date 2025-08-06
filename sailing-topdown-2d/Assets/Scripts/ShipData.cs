@@ -9,12 +9,21 @@ public class ShipData : ScriptableObject
     public float wheelReturnTarget = 0f; // Target angle for the wheel to return to when not being dragged
     public float wheelReturnSpeed = 90f; // Speed at which the wheel returns to the target angle
     public float turnRate = 30f; // Degrees per second per max rudder
+    public float detectionRange = 100f; // Range for detecting obstacles
 
     public float rudderAngle;
     public float wheelAngle;
     public float moveSpeed;
     public float heading;
-    
+
+    public void Reset()
+    {
+        rudderAngle = 0f;
+        wheelAngle = 0f;
+        moveSpeed = 0f;
+        heading = 0f;
+    }
+
     public void UpdateHeading(float rudderAngle, float deltaTime)
     {
         // Rudder angle is clamped, so this is safe

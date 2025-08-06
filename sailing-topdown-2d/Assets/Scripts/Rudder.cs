@@ -8,7 +8,7 @@ public class Rudder : MonoBehaviour
     {
         if (shipData != null)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -shipData.rudderAngle); // Invert angle to match steering direction
+            transform.localRotation = Quaternion.Euler(0, 0, -shipData.rudderAngle); // Invert angle to match steering direction
         }
     }
 }

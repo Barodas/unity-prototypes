@@ -18,7 +18,8 @@ MonoBehaviour:
   wheelReturnTarget: 0
   wheelReturnSpeed: 90
   turnRate: 0.5
+  detectionRange: 100
   rudderAngle: 0
   wheelAngle: 0
   moveSpeed: 5
-  heading: 358.7411
+  heading: 64.5904
