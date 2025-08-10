@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2697113d9a0bda4eb91e35316c8f664b, type: 3}
+  m_Script: {fileID: 11500000, guid: 522b1e35086bc63138b389bb59eaaa31, type: 3}
   m_Name: Barrel
   m_EditorClassIdentifier: 
-  itemName: Barrel
+  size:
+    width: 2
+    height: 2
   icon: {fileID: -2933811294009664875, guid: 3a6e2293927669029b61aeaefc4707e4, type: 3}
-  shape: 3
-  occupiedSlots: []
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
