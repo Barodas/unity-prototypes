@@ -32,7 +32,7 @@ public class InventoryPanel : MonoBehaviour
 
     public void AddTestItem(InventoryItemData testItemData)
     {
-        GameObject itemGO = Instantiate(itemPrefab, transform);
+        GameObject itemGO = Instantiate(itemPrefab, transform.parent);
         var itemUI = itemGO.GetComponent<InventoryItemUI>();
         itemUI.SetItem(testItemData);
 
