@@ -19,4 +19,6 @@ public class AbilityData : ScriptableObject
     public int generateAmount = 0;
 
     public int damage = 10;
+
+    public string description = "";
 }

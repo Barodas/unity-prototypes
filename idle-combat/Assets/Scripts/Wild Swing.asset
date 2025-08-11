@@ -17,3 +17,4 @@ MonoBehaviour:
   generateType: 0
   generateAmount: 0
   damage: 15
+  description: A reckless strike

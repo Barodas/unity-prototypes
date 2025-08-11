@@ -505,7 +505,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -652,6 +652,8 @@ GameObject:
   - component: {fileID: 1263854708}
   - component: {fileID: 1263854710}
   - component: {fileID: 1263854709}
+  - component: {fileID: 1263854711}
+  - component: {fileID: 1263854712}
   m_Layer: 5
   m_Name: AbilitySelection
   m_TagString: Untagged
@@ -716,6 +718,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263854707}
   m_CullTransparentMesh: 1
+--- !u!114 &1263854711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263854707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4008369169df84a83e19a63db79bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelContainer: {fileID: 1263854708}
+  abilityButtonPrefab: {fileID: 224762223290183083, guid: befd7a50566d12648b2e808e30f85f0a, type: 3}
+  allAbilities:
+  - {fileID: 11400000, guid: db2d2744dcea7ff4caaad4a501f18111, type: 2}
+  - {fileID: 11400000, guid: 7d1aaeb150b5bd4479bbd5cd8804c9d3, type: 2}
+--- !u!114 &1263854712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263854707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1776750817
 GameObject:
   m_ObjectHideFlags: 0

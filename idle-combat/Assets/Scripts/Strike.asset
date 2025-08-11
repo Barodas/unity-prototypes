@@ -17,3 +17,4 @@ MonoBehaviour:
   generateType: 0
   generateAmount: 1
   damage: 10
+  description: A basic strike.
