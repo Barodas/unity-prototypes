@@ -21,4 +21,5 @@ public class AbilityData : ScriptableObject
     public int damage = 10;
 
     public string description = "";
+    public Sprite icon;
 }

@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class AbilityListPanel : MonoBehaviour
 {
-    public RectTransform panelContainer; // Assign in inspector: the panel anchored bottom right
-    public GameObject abilityButtonPrefab; // Assign in inspector: prefab with Button + Tooltip
-    public List<AbilityData> allAbilities; // Assign in inspector or load dynamically
+    public RectTransform panelContainer;
+    public ActiveAbilityPanel activeAbilityPanel;
+    public GameObject abilityButtonPrefab;
+    public List<AbilityData> allAbilities;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class AbilityListPanel : MonoBehaviour
         {
             var buttonObj = Instantiate(abilityButtonPrefab, panelContainer);
             var abilityListButton = buttonObj.GetComponentInChildren<AbilityListButton>();
-            abilityListButton.InitialiseButton(ability);
+            abilityListButton.InitialiseButton(ability, () => activeAbilityPanel.AddAbility(ability));
         }
     }
 }

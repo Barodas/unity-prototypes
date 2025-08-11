@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AbilityListButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     AbilityData abilityData;
+    public Button button;
     public TMPro.TextMeshProUGUI buttonText;
     public GameObject tooltip;
     public TMPro.TextMeshProUGUI tooltipText;
-    public void InitialiseButton(AbilityData data)
+    public void InitialiseButton(AbilityData data, UnityEngine.Events.UnityAction action)
     {
         abilityData = data;
         buttonText.text = data.name;
         tooltipText.text = GetAbilityTooltip(data);
+        button.onClick.AddListener(action);
         tooltip.SetActive(false);
     }
 
