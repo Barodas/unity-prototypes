@@ -55,14 +55,11 @@ public class ActiveAbilityPanel : MonoBehaviour
 
     public void MoveAbility(int fromIndex, int toIndex)
     {
-        if (fromIndex < characterData.abilities.Count && toIndex < characterData.abilitySlots)
+        if (fromIndex < characterData.abilities.Count && toIndex < characterData.abilities.Count && fromIndex != toIndex)
         {
-            var ability = characterData.abilities[fromIndex];
-            characterData.abilities[fromIndex] = null;
-            if (characterData.abilities.Count <= toIndex)
-                characterData.abilities.Add(ability);
-            else
-                characterData.abilities[toIndex] = ability;
+            var temp = characterData.abilities[fromIndex];
+            characterData.abilities[fromIndex] = characterData.abilities[toIndex];
+            characterData.abilities[toIndex] = temp;
             SyncUIWithData();
         }
     }

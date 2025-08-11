@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ActiveAbilitySlot : MonoBehaviour
+public class ActiveAbilitySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Button removeButton;
     public TextMeshProUGUI slotName;
@@ -12,12 +13,18 @@ public class ActiveAbilitySlot : MonoBehaviour
     private int slotIndex;
     private ActiveAbilityPanel panel;
 
+    private CanvasGroup canvasGroup;
+    private RectTransform rectTransform;
+    private Vector3 originalPosition;
+    private Transform originalParent;
+
     public void Setup(ActiveAbilityPanel panel, int index)
     {
         this.panel = panel;
         this.slotIndex = index;
         removeButton.onClick.AddListener(() => panel.RemoveAbility(slotIndex));
-        // Add drag-and-drop event handlers here
+        canvasGroup = GetComponent<CanvasGroup>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void SetAbility(AbilityData ability)
@@ -49,5 +56,42 @@ public class ActiveAbilitySlot : MonoBehaviour
     {
         return $"Cost:\n {ability.energyCost} {ability.energyType}\nGenerates:\n {ability.generateAmount} {ability.generateType}";
     }
-    // Implement drag-and-drop logic here
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (ability == null) return;
+        originalPosition = rectTransform.position;
+        originalParent = transform.parent;
+        canvasGroup.alpha = 0.6f;
+        canvasGroup.blocksRaycasts = false;
+        transform.SetParent(panel.slotContainer.parent); // Move to top canvas for drag
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (ability == null) return;
+        rectTransform.position = eventData.position;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (ability == null) return;
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+        transform.SetParent(originalParent);
+        rectTransform.position = originalPosition;
+
+        // Check for drop on another slot
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        foreach (var result in results)
+        {
+            var targetSlot = result.gameObject.GetComponent<ActiveAbilitySlot>();
+            if (targetSlot != null && targetSlot != this)
+            {
+                panel.MoveAbility(slotIndex, targetSlot.slotIndex);
+                break;
+            }
+        }
+    }
 }
