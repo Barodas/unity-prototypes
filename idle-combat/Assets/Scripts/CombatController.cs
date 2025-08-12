@@ -7,6 +7,8 @@ public class CombatController : MonoBehaviour
     public CharacterData characterData;
     public DummyTarget dummyTarget;
 
+    public EnergyDisplay energyDisplay; // TODO: Might be better to create an overall character class that contains reference to this and data
+
     void Start()
     {
         StartCoroutine(CombatLoop());
@@ -18,6 +20,7 @@ public class CombatController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             TryUseAbility();
+            energyDisplay.UpdateEnergyDisplay();
         }
     }
 
