@@ -10,7 +10,7 @@ public class ActiveAbilitySlot : MonoBehaviour, IBeginDragHandler, IDragHandler,
     public TextMeshProUGUI slotInfo;
     public Image abilityIcon;
     private AbilityData ability;
-    private int slotIndex;
+    [SerializeField]private int slotIndex;
     private ActiveAbilityPanel panel;
 
     private CanvasGroup canvasGroup;

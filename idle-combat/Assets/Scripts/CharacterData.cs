@@ -10,4 +10,5 @@ public class CharacterData : ScriptableObject
     public int curHealth = 100;
 
     public List<AbilityData> abilities = new List<AbilityData>();
+    public List<EnergyType> energy = new List<EnergyType>();
 }
