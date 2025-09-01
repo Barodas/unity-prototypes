@@ -12,7 +12,9 @@ Implementation of a combat system inspired by [this video](https://www.youtube.c
 Abilities can be generators and/or spenders. Character attempts to activate each ability in sequence each "turn".
 
 ## Dwarf Game
-Old 2019 Project. Side on block game. Uses raycasts for collision detection. Has block breaking and inventory.
+![screenshot](docs/dwarf-game.png)
+
+Old 2019 Project. Side on block game. Uses raycasts for collision detection. Has block breaking/placement and inventory.
 
 ## Invaders
 Old 2018 Space Invaders Clone - Trying different implementations for upgrades/scoring/etc.
