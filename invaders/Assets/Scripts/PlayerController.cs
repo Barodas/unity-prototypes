@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private float _moveSpeed = 30f;
     private float _shootTimer;
     private float _shootCooldown = 0.2f;
+    private float _turnSpeed = 0.5f;
 
     public float MoveSpeed { get { return _moveSpeed; } }
 
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         if(_shootTimer <= 0 && Input.GetKey(KeyCode.Space))
         {
             GameObject bullet = Instantiate(BulletPrefab, BulletSpawnPoint.transform, false);
-            bullet.GetComponent<BulletBasicController>().SetBulletParams(Vector2.up, 10, "BulletFriendly");
+            bullet.GetComponent<BulletBasicController>().SetBulletParams(transform.up, 10, "BulletFriendly");
             _shootTimer = _shootCooldown;
         }
 
@@ -37,11 +37,13 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        _rb.AddForce(movement * _moveSpeed);
+        float rotationInput = Input.GetAxisRaw("Horizontal");
+        float movementInput = Input.GetAxis("Vertical");
+        
+        _rb.AddTorque(-rotationInput * _turnSpeed);
+        
+        _rb.AddForce(transform.up * movementInput * _moveSpeed);
+        
 	}
 
     void OnTriggerEnter2D(Collider2D col)
