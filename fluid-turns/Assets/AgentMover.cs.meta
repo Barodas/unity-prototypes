@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d47b846c68e925247922fa87ff9f5b8c
+timeCreated: 1470296590
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Fireball: {fileID: 114000012256957528, guid: 099e60dbd1d65aa4e9024d711ca56393,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
