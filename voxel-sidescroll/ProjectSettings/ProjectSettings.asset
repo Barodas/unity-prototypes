@@ -698,8 +698,8 @@ PlayerSettings:
     Unity_Ads: 0
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: a7a5d01c-a1cc-47d3-b34b-a31cc880d137
-  projectName: CorgiEngine
-  organizationId: reuno
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNewInputSystem: 0
