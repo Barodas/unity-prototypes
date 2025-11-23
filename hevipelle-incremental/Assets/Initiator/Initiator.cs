@@ -1,10 +1,14 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Initiator : MonoBehaviour
 {
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private LoadingScreen _loadingScreen;
+    [SerializeField] private EventSystem _eventSystem;
+
+    [SerializeField] private GameManager _gameManager;
 
     private async void Start()
     {
@@ -21,6 +25,8 @@ public class Initiator : MonoBehaviour
     {
         _mainCamera = Instantiate(_mainCamera);
         _loadingScreen = Instantiate(_loadingScreen);
+        _eventSystem = Instantiate(_eventSystem);
+        _gameManager = Instantiate(_gameManager);
     }
 
     private async UniTask InitialiseObjects()

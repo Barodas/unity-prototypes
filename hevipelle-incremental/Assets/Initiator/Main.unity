@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 4925730294203748724, guid: 078491471faf56f44aa7ac812fd584e3, type: 3}
   _loadingScreen: {fileID: 2860834039072343748, guid: 8a0b167ccbd6775438754bd3f10a15db, type: 3}
+  _eventSystem: {fileID: 8683760671187338478, guid: a71a8ba0de500294a8f3e006c99184c4, type: 3}
+  _gameManager: {fileID: 3617952406242287450, guid: bcaf20d8999b36e4e931ca229bb70586, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
