@@ -9,6 +9,7 @@ public class Initiator : MonoBehaviour
     [SerializeField] private EventSystem _eventSystem;
 
     [SerializeField] private GameManager _gameManager;
+    [SerializeField] private Popup _popup;
 
     private async void Start()
     {
@@ -27,25 +28,27 @@ public class Initiator : MonoBehaviour
         _loadingScreen = Instantiate(_loadingScreen);
         _eventSystem = Instantiate(_eventSystem);
         _gameManager = Instantiate(_gameManager);
+        _popup = Instantiate(_popup, _gameManager.transform);
     }
 
     private async UniTask InitialiseObjects()
     {
-        // Initialise services and game systems (such as analytics or input)
+        _popup.Initialise();
+        _gameManager.Initialise(_popup);
     }
 
     private async UniTask CreateObjects()
     {
-        // Instantiate game objects 
+        _gameManager.CreateObjects();
     }
 
     private void PrepareGame()
     {
-        // Setup up previously instantiated objects (positions, states, etc)
+        _gameManager.Prepare();
     }
 
     private async UniTask BeginGame()
     {
-        // Start sequence of the game (fade in elements, zoom camera, etc)
+        _gameManager.Begin();
     }
 }
