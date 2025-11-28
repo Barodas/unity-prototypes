@@ -17,6 +17,9 @@ public class PlayerData : ScriptableObject
     public int Divinity;
     public float TickInterval;
 
+    public delegate void OnStatsChanged();
+    public event OnStatsChanged StatsChanged;
+
     public void Reset()
     {
         Faith = _startingFaith;
@@ -26,10 +29,17 @@ public class PlayerData : ScriptableObject
         TickInterval = _startingTickInterval;
     }
 
+    public void SetPopulationCap(int newCap)
+    {
+        PopulationCap = newCap + _startingPopulationCap;
+        StatsChanged?.Invoke();
+    }
+
     public void Tick()
     {
         // TODO: Determine how Divinity affects faith gain
         Population = Mathf.Clamp(Population + (int)(Population * 0.3f), 0, PopulationCap);
         Faith += Population;
+        StatsChanged?.Invoke();
     }
 }

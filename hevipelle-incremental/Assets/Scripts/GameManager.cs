@@ -50,7 +50,14 @@ public class GameManager : MonoBehaviour
             node.Reset();
         }
 
+        _playerData.StatsChanged += UpdateStatsText;
         UpdateStatsText();
+
+        foreach (NodeButton button in _nodeButtons)
+        {
+            _playerData.StatsChanged += button.CheckState;
+        }
+        _playerData.StatsChanged += UpdateNodeContent;
     }
 
     public void Begin()
@@ -77,12 +84,6 @@ public class GameManager : MonoBehaviour
         }
 
         _playerData.Tick();
-        UpdateStatsText();
-        foreach (NodeButton button in _nodeButtons)
-        {
-            button.CheckState();
-        }
-        UpdateNodeContent();
         _tickTimer = 0f;
     }
 
@@ -138,7 +139,14 @@ public class GameManager : MonoBehaviour
         {
             _playerData.Faith -= data.GetCurrentCost();
             data.PurchaseCount++;
-            // TODO: Calculate new population cap based on all nodes state.
+
+            int curPopulationCap = 0;
+            foreach (var node in _nodeData)
+            {
+                curPopulationCap += node.GetCurrentPopulationCapIncrease();
+            }
+            _playerData.SetPopulationCap(curPopulationCap);
+
             InitialiseNodeContent(data);
         }
 
@@ -153,6 +161,8 @@ public class GameManager : MonoBehaviour
         });
         _nodeContents.Add(button.gameObject);
         _upgradeButtons.Add(upgradeButton);
+
+        UpdateNodeContent();
     }
 
     private void UpdateNodeContent()

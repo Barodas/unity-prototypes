@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7069d10c14f9f7a41a44aea750788bff, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  Faith: 10
-  Population: 10
-  PopulationCap: 10
+  _startingFaith: 10
+  _startingPopulation: 10
+  _startingPopulationCap: 0
+  _startingDivinity: 0
+  _startingTickInterval: 1
+  Faith: 839
+  Population: 23
+  PopulationCap: 23
   Divinity: 0
+  TickInterval: 1

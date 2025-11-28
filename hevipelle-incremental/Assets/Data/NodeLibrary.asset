@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225416c54be596c42b41311077fe713a, type: 3}
-  m_Name: NodeCore
+  m_Name: NodeLibrary
   m_EditorClassIdentifier: 
-  NodeName: Core
-  NodeDescription: The Core Crystal, it emits light in response to the peoples prayers.
-  PopulationCapIncrease: 10
+  NodeName: Library
+  NodeDescription: Research improvements to light generation and civilisation management.
+  PopulationCapIncrease: 5
   PopulationCapUpgradeIncrease: 1
-  UnlockCost: 10
-  UpgradeCost: 5
+  UnlockCost: 200
+  UpgradeCost: 50
   CostScaling: 1
-  Dependant1: {fileID: 0}
-  Dependant1Level: 0
-  PurchaseCount: 13
+  Dependant1: {fileID: 11400000, guid: f9683a801870806479d7ed13544599a7, type: 2}
+  Dependant1Level: 5
+  PurchaseCount: 0

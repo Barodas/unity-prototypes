@@ -10,6 +10,6 @@ public static class Number
         {
             return num.ToString();
         }
-        return $"{mantissa}e{power}";
+        return $"{mantissa:F2}e{power}";
     }
 }

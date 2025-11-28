@@ -20,6 +20,16 @@ public class NodeButton : MonoBehaviour
 
     public void CheckState()
     {
+        if (_nodeData.PurchaseCount <= 0)
+        {
+            if (_nodeData.Dependant1 != null && _nodeData.Dependant1.PurchaseCount < _nodeData.Dependant1Level)
+            {
+                _button.interactable = false;
+                return;
+            }
+        }
+
+        _button.interactable = true;
         var upgradeCost = _nodeData.GetCurrentCost();
         _indicator.SetActive(_playerData.Faith >= upgradeCost);
     }

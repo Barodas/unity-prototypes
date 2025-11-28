@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum CostType
+{
+    Linear,
+    Quadratic,
+    Exponential
+}
+
 [CreateAssetMenu(fileName = "NodeData", menuName = "Scriptable Objects/NodeData")]
 public class NodeData : ScriptableObject
 {
@@ -13,6 +20,7 @@ public class NodeData : ScriptableObject
 
     public int UnlockCost;
     public int UpgradeCost;
+    public CostType CostScaling;
     public NodeData Dependant1;
     public int Dependant1Level;
 
@@ -25,7 +33,20 @@ public class NodeData : ScriptableObject
 
     public int GetCurrentCost()
     {
-        return PurchaseCount < 1 ? UnlockCost : UnlockCost + (PurchaseCount * UpgradeCost);
+        if (PurchaseCount < 1)
+        {
+            return UnlockCost;
+        }
+
+        switch (CostScaling)
+        {
+            case CostType.Quadratic:
+                return UnlockCost + (PurchaseCount * PurchaseCount * UpgradeCost);
+            case CostType.Exponential:
+                return UnlockCost + ((int)Mathf.Pow(2, PurchaseCount) * UpgradeCost);
+            default: // CostType.Linear
+                return UnlockCost + (PurchaseCount * UpgradeCost);
+        }
     }
 
     public int GetCurrentPopulationCapIncrease()

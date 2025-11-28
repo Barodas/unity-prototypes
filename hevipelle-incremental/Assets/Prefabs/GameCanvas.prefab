@@ -473,6 +473,8 @@ MonoBehaviour:
   _upgradeButtonPrefab: {fileID: 257815408226461286, guid: e90914f118806ae4d92423a508504ee4, type: 3}
   _nodeData:
   - {fileID: 11400000, guid: f9683a801870806479d7ed13544599a7, type: 2}
+  - {fileID: 11400000, guid: b81534adc12c7c949a7a4f62f2907389, type: 2}
+  - {fileID: 11400000, guid: aa7fcafe96279d6409b85fb541e294f9, type: 2}
 --- !u!1 &5633344474442088725
 GameObject:
   m_ObjectHideFlags: 0
