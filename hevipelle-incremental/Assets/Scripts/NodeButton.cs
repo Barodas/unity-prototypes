@@ -22,10 +22,24 @@ public class NodeButton : MonoBehaviour
     {
         if (_nodeData.PurchaseCount <= 0)
         {
-            if (_nodeData.Dependant1 != null && _nodeData.Dependant1.PurchaseCount < _nodeData.Dependant1Level)
+            if (_nodeData.Dependant1 != null)
             {
-                _button.interactable = false;
-                return;
+                // Hide the button if the dependant hasnt been purchased/unlocked
+                if (_nodeData.Dependant1.PurchaseCount <= 0)
+                {
+                    _button.interactable = false;
+                    _button.gameObject.SetActive(false);
+                    _indicator.SetActive(false);
+                    return;
+                }
+                // Show the button, but disable until the dependant has been ugraded enough
+                else if (_nodeData.Dependant1.PurchaseCount < _nodeData.Dependant1Level)
+                {
+                    _button.gameObject.SetActive(true);
+                    _button.interactable = false;
+                    _indicator.SetActive(false);
+                    return;
+                }
             }
         }
 

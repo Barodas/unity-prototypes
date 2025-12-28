@@ -27,6 +27,7 @@ public class PlayerData : ScriptableObject
         PopulationCap = _startingPopulationCap;
         Divinity = _startingDivinity;
         TickInterval = _startingTickInterval;
+        StatsChanged?.Invoke();
     }
 
     public void SetPopulationCap(int newCap)

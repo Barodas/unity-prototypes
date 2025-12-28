@@ -43,13 +43,6 @@ public class GameManager : MonoBehaviour
 
     public void Prepare()
     {
-        // TODO: Remove once save/load is implemented or to test over multiple sessions
-        _playerData.Reset(); 
-        foreach (var node in _nodeData)
-        {
-            node.Reset();
-        }
-
         _playerData.StatsChanged += UpdateStatsText;
         UpdateStatsText();
 
@@ -58,6 +51,13 @@ public class GameManager : MonoBehaviour
             _playerData.StatsChanged += button.CheckState;
         }
         _playerData.StatsChanged += UpdateNodeContent;
+
+        // TODO: Remove once save/load is implemented or to test over multiple sessions
+        _playerData.Reset();
+        foreach (var node in _nodeData)
+        {
+            node.Reset();
+        }
     }
 
     public void Begin()
